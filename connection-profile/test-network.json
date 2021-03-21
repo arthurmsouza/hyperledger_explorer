@@ -49,8 +49,8 @@
 			"tlsCACerts": {
 				"path": "/tmp/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
 			},
-			"url": "grpcs://192.168.171.201:7051",
-			"eventUrl": "grpcs://192.168.171.201:7053",
+			"url": "grpcs://127.0.0.1:7051",
+			"eventUrl": "grpcs://127.0.0.1:7053",
 			"grpcOptions": {
 				"ssl-target-name-override": "peer0.org1.example.com"
 			}
@@ -61,7 +61,7 @@
 			"tlsCACerts": {
 				"path": "/tmp/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
 			},
-			"url": "grpcs://192.168.171.201:7050"
+			"url": "grpcs://127.0.0.1:7050"
 		}
 	}
 }
