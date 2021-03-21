@@ -4,7 +4,7 @@
 	"client": {
 		"tlsEnable": true,
 		"adminCredential": {
-			"id": "cd",
+			"id": "exploreradmin",
 			"password": "exploreradminpw"
 		},
 		"enableAuthentication": true,
