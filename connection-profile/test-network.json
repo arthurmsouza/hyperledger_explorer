@@ -4,7 +4,7 @@
 	"client": {
 		"tlsEnable": true,
 		"adminCredential": {
-			"id": "cd",
+			"id": "exploreradmin",
 			"password": "exploreradminpw"
 		},
 		"enableAuthentication": true,
@@ -20,8 +20,10 @@
 	},
 	"channels": {
 		"mychannel": {
+			"orderers": ["orderer.example.com"],
 			"peers": {
-				"peer0.org1.example.com": {}
+				"peer0.org1.example.com": {},
+				"peer0.org2.example.com": {}
 			}
 		}
 	},
@@ -36,23 +38,14 @@
 				"path": "/tmp/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem"
 			}
 		},
-		"OrdererMSP": {
-			"mspid": "OrdererMSP",
+		"Org2MSP": {
+			"mspid": "Org2MSP",
 			"adminPrivateKey": {
-			  "path":
-				"/tmp/crypto/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore/priv_sk"
-			}
-		  }
-	},
-	"peers": {
-		"peer0.org1.example.com": {
-			"tlsCACerts": {
-				"path": "/tmp/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+				"path": "/tmp/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/priv_sk"
 			},
-			"url": "grpcs://127.0.0.1:7051",
-			"eventUrl": "grpcs://127.0.0.1:7053",
-			"grpcOptions": {
-				"ssl-target-name-override": "peer0.org1.example.com"
+			"peers": ["peer0.org2.example.com"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem"
 			}
 		}
 	},
@@ -61,7 +54,30 @@
 			"tlsCACerts": {
 				"path": "/tmp/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
 			},
-			"url": "grpcs://127.0.0.1:7050"
+			"url": "grpcs://10.0.0.4:7050"
+		}
+	},
+	"peers": {
+		"peer0.org1.example.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+			},
+			"url": "grpcs://10.0.0.4:7051",
+			"eventUrl": "grpcs://10.0.0.4:7053",
+			"grpcOptions": {
+				"ssl-target-name-override": "peer0.org1.example.com"
+			}
+		},
+		"peer0.org2.example.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+			},
+			"url": "grpcs://10.0.0.4:9051",
+			"eventUrl": "grpcs://10.0.0.4:7053",
+			"grpcOptions": {
+				"ssl-target-name-override": "peer0.org2.example.com"
+			}
 		}
 	}
+	
 }
